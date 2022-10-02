@@ -40,5 +40,10 @@ while not game_over:
         game_over = True
         scoreboard.game_over()
 
+    # Detect collision with tail
+    for block in snake.blocks[1:]:
+        if snake.head.distance(block) < 10:
+            game_over = True
+            scoreboard.game_over()
 
 screen.exitonclick()
