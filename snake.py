@@ -16,12 +16,18 @@ class Snake:
         self.head = self.blocks[0]
 
     def create_snake(self):
-        for i in INITIAL_POS:
-            new_block = Turtle("square")
-            new_block.penup()
-            new_block.color("white")
-            new_block.goto(i)
-            self.blocks.append(new_block)
+        for pos in INITIAL_POS:
+            self.add_block(pos)
+
+    def add_block(self, position):
+        new_block = Turtle("square")
+        new_block.penup()
+        new_block.color("white")
+        new_block.goto(position)
+        self.blocks.append(new_block)
+
+    def extend(self):
+        self.add_block(self.blocks[-1].position())
 
     def move(self):
         for block_index in range(len(self.blocks)-1, 0, -1):
